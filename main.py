@@ -34,3 +34,17 @@ def main(page: ft.Page):
             status_msg.value = "Incorrect!"
             status_msg.color = "red"
 
+    data["idx"] += 1
+        
+    if data["idx"] < len(word_list):
+            word_text.value = word_list[data["idx"]]
+            user_input.value = ""
+            progress.value = f"Progress: {data['idx']} / {len(word_list)}"
+    else:
+            total = len(word_list)
+            acc_val = (data["correct"] / total) * 100
+            word_text.value = "Done!"
+            user_input.disabled = True
+            progress.value = f"Final Score: {data['correct']} / {total}"
+            accuracy.value = f"Accuracy: {acc_val:.1f}%"
+            status_msg.value = "Game Finished!"
