@@ -48,3 +48,19 @@ def main(page: ft.Page):
             progress.value = f"Final Score: {data['correct']} / {total}"
             accuracy.value = f"Accuracy: {acc_val:.1f}%"
             status_msg.value = "Game Finished!"
+ 
+    page.update()
+
+    user_input.on_submit = handle_submit
+
+    page.add(
+        ft.Column([
+            word_text, 
+            user_input, 
+            status_msg, 
+            progress, 
+            accuracy
+        ], horizontal_alignment=ft.CrossAxisAlignment.CENTER)
+    )
+
+ft.app(target=main)
